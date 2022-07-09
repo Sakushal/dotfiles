@@ -22,7 +22,7 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: Noto Sans Regular 11
+font pango: DejaVu Sans Mono 9
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -262,22 +262,22 @@ set $ws10 "10"
 #workspace $ws5 output HDMI-0
 
 # bind program to workspace and focus to them on startup:
-assign [class="alacritty"] $ws1
+assign [class="Alacritty"] $ws1
 assign [class="(?i)firefox"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="VSCodium"] $ws4
 assign [class="TelegramDesktop"] $ws5
 assign [class="vlc"] $ws6
-assign [class="^spotify*"] $ws7
+assign [id="0x02800002"] $ws7
 
 # automatic set focus new window if it opens on another workspace then the current:
-for_window [class=Xfce4-terminal] focus
+for_window [class=Alacritty] focus
 for_window [class=(?i)firefox] focus
 for_window [class=Thunar] focus
 for_window [class=Thunderbird] focus
 for_window [class=TelegramDesktop] focus
 for_window [class=vlc] focus
-for_window [class="^spotify*"] focus
+for_window [id="0x02800002"] focus
 
 ##############
 # compositor #
@@ -463,11 +463,11 @@ strip_workspace_numbers yes
 
 		    colors {
 		    separator          $purple
-		    background         $darkgrey
+		    background         $black
 		    statusline         $white
 #                          		border 		        bg		txt		indicator
-		focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
-		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
+		focused_workspace	$lowgrey	   	$grey		$darkgrey	$purple
+		active_workspace	$mediumgrey      	$mediumgrey	$darkgrey	$purple
 		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
 		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
 	}
@@ -534,4 +534,4 @@ bindsym $mod+t exec rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi
 
 # Display wallpaper
-exec_always feh --bg--fill /Downloads/funko-pop-marvel-wandavision-scarlet-witch.jpg
+exec --no-startup-id picom -b
